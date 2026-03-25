@@ -1,0 +1,39 @@
+﻿@model List<Empleado>
+
+@{
+    List<string> oficios = ViewData["OFICIOS"] as List<string>;
+}
+
+<h1>Empleados Routes</h1>
+<form method="post">
+    <label>Seleccione un oficio</label>
+    <select name="oficio" class="form-control">
+        @foreach (var oficio in oficios)
+        {
+            <option value="@oficio">@oficio</option>
+        }
+    </select>
+    <button class="btn btn-warning"> Mostrar empleados</button>
+</form>
+
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Empleado empleado in Model)
+        {
+            <tr>
+                <td>@empleado.Apellido</td>
+                <td>@empleado.Oficio</td>
+                <td>@empleado.Salario</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
